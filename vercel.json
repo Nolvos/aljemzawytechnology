@@ -1,5 +1,5 @@
 {
   "name": "my-project",
-  "entrypoint": "predict.py"
+  "entrypoint": "task4.py"
   
 }
