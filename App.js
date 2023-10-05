@@ -1,15 +1,12 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
-import { ThemeProvider } from 'styled-components';
-import theme from './Theme';
-import App from './App';
 
-const Root = () => {
+const App = () => {
   const [result, setResult] = useState('');
 
   const handleClick = async () => {
-    // Make a request to the Python function
-    const response = await fetch('http://localhost:5000/predict');
+    // Make a request to the Vercel URL
+    const response = await fetch('https://vercel.com/houssams-projects/aljemzawy');
 
     // Get the response body
     const body = await response.json();
@@ -19,12 +16,11 @@ const Root = () => {
   };
 
   return (
-    <ThemeProvider theme={theme}>
-      <App />
+    <div>
       <input type="text" value={result} />
       <button onClick={handleClick}>What is ?</button>
-    </ThemeProvider>
+    </div>
   );
 };
 
-ReactDOM.render(<Root />, document.getElementById('root'));
+ReactDOM.render(<App />, document.getElementById('root'));
