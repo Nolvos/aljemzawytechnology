@@ -2,23 +2,31 @@ import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 
 const App = () => {
-  const [result, setResult] = useState('');
+  const [codeContent, setCodeContent] = useState('');
 
   const handleClick = async () => {
-    // Make a request to the Vercel URL
-    const response = await fetch('https://vercel.com/houssams-projects/aljemzawy');
+    try {
+      // Fetch the content of your GitHub repository
+      const response = await fetch('https://raw.githubusercontent.com/Nolvos/aljemzawytechnology/main/task4.py');
+      
+      if (!response.ok) {
+        throw new Error('Failed to fetch code content.');
+      }
 
-    // Get the response body
-    const body = await response.json();
+      // Get the response body as text
+      const codeText = await response.text();
 
-    // Set the result state
-    setResult(body.result);
+      // Set the code content state
+      setCodeContent(codeText);
+    } catch (error) {
+      console.error('Error fetching code:', error);
+    }
   };
 
   return (
     <div>
-      <input type="text" value={result} />
-      <button onClick={handleClick}>What is ?</button>
+      <pre>{codeContent}</pre>
+      <button onClick={handleClick}>Display Python Code</button>
     </div>
   );
 };
