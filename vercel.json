@@ -1,0 +1,5 @@
+{
+  "name": "my-project",
+  "runtime": "python",
+  "entrypoint": "predict.py"
+}
