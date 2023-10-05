@@ -12,4 +12,15 @@ const Root = () => (
   </ThemeProvider>
 );
 
+const handleClick = async () => {
+  // Make a request to the Python function
+  const response = await fetch('http://localhost:5000/predict');
+
+  // Get the response body
+  const body = await response.json();
+
+  // Set the result state
+  setResult(body.result);
+};
 ReactDOM.render(<Root />, document.getElementById('root'));
+
